@@ -4,6 +4,7 @@ from PyQt5.QtCore import Qt
 from task import Ui_MainWindow
 import sys
 import math
+import performance
 
 
 class ApplicationWindow(QtWidgets.QMainWindow):
