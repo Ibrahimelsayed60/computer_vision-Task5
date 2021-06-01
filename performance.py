@@ -56,23 +56,62 @@ def rmse_metric(actual, predicted):
 	return sqrt(mean_error)
 
 ######## Test ###########################
+# from sklearn.datasets import make_classification
+# from sklearn.ensemble import RandomForestClassifier
+# from sklearn.model_selection import train_test_split
+# #import pandas as pd
+# #import numpy as np
+# from sklearn.metrics import roc_curve
+# import matplotlib.pyplot as plt
+
+# X, y = make_classification(n_samples=1000, n_informative=10, n_features=20, flip_y=0.2)
+# X_train, X_test, y_train, y_test = train_test_split(
+#     X, y, test_size=0.3, random_state=42
+# )
+
+# model = RandomForestClassifier()
+# model.fit(X_train, y_train)
+
+# prob_vector = model.predict_proba(X_test)[:, 1]
 
 
-#### 1. Performance test
-
-# partitions = 100
-# ROC = roc_from_scratch(prob_vector, y_test, partitions=partitions)
-# fpr, tpr = ROC[:, 0], ROC[:, 1]
-# rectangle_roc = 0
-# for k in range(partitions):
-#         rectangle_roc = rectangle_roc + (fpr[k]- fpr[k + 1]) * tpr[k]
-# rectangle_roc
+# ROC = roc_from_scratch(prob_vector,y_test,partitions=10)
+# plt.plot(ROC[:,0],ROC[:,1],color='#0F9D58')
+# plt.title('ROC Curve',fontsize=20)
+# plt.xlabel('False Positive Rate',fontsize=16)
+# plt.ylabel('True Positive Rate',fontsize=16)
+# plt.show()
 
 
-#### 2. ROC curve Test
-# import seaborn as sns
-# sns.set()
-# plt.figure(figsize=(15,7))
+
+# from sklearn.metrics import roc_curve
+# fpr, tpr, thresholds = roc_curve(y_test, prob_vector)
+
+# plt.figure(figsize=(15, 7))
+# plt.scatter(fpr, tpr, s=100, alpha=0.5, color="blue", label="Scikit-learn")
+# plt.scatter(
+#     ROC[:, 0], ROC[:, 1], color="red", s=100, alpha=0.3, label="Our implementation"
+# )
+# plt.title("ROC Curve", fontsize=20)
+# plt.xlabel("False Positive Rate", fontsize=16)
+# plt.ylabel("True Positive Rate", fontsize=16)
+# plt.legend()
+# plt.show()
+# #### 1. Performance test
+
+# # partitions = 100
+# # ROC = roc_from_scratch(prob_vector, y_test, partitions=partitions)
+# # fpr, tpr = ROC[:, 0], ROC[:, 1]
+# # rectangle_roc = 0
+# # for k in range(partitions):
+# #         rectangle_roc = rectangle_roc + (fpr[k]- fpr[k + 1]) * tpr[k]
+# # rectangle_roc
+
+
+# #### 2. ROC curve Test
+# # import seaborn as sns
+# # sns.set()
+# # plt.figure(figsize=(15,7))
 
 # ROC = roc_from_scratch(prob_vector,y_test,partitions=10)
 # plt.scatter(ROC[:,0],ROC[:,1],color='#0F9D58',s=100)
