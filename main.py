@@ -54,6 +54,8 @@ class ApplicationWindow(QtWidgets.QMainWindow):
         self.ui.image_1.plotItem.getViewBox().viewRange()
         self.ui.image_1.plot(ROC[:,0],ROC[:,1])
 
+        self.ui.textEdit_1.setPlaceholderText("{}%".format(pc.accuracy_metric(y_test,prediction)))
+
         
 
 

@@ -34,7 +34,7 @@
        <attribute name="title">
         <string>ROC</string>
        </attribute>
-       <widget class="QWidget" name="">
+       <widget class="QWidget" name="layoutWidget">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -59,7 +59,13 @@
             </widget>
            </item>
            <item>
-            <widget class="QTextEdit" name="textEdit_1"/>
+            <widget class="QTextEdit" name="textEdit_1">
+             <property name="font">
+              <font>
+               <pointsize>20</pointsize>
+              </font>
+             </property>
+            </widget>
            </item>
           </layout>
          </item>

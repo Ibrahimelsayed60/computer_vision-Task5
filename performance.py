@@ -41,21 +41,6 @@ def confusion_matrix(actual, predicted):
 	return unique, matrix
 
 
-def mae_metric(actual, predicted):
-	sum_error = 0.0
-	for i in range(len(actual)):
-		sum_error += abs(predicted[i] - actual[i])
-	return sum_error / float(len(actual))
-
-def rmse_metric(actual, predicted):
-	sum_error = 0.0
-	for i in range(len(actual)):
-		prediction_error = predicted[i] - actual[i]
-		sum_error += (prediction_error ** 2)
-	mean_error = sum_error / float(len(actual))
-	return sqrt(mean_error)
-
-
 # Calculate accuracy percentage between two lists
 def accuracy_metric(actual, predicted):
 	correct = 0
