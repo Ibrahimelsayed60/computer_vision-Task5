@@ -55,6 +55,16 @@ def rmse_metric(actual, predicted):
 	mean_error = sum_error / float(len(actual))
 	return sqrt(mean_error)
 
+
+# Calculate accuracy percentage between two lists
+def accuracy_metric(actual, predicted):
+	correct = 0
+	for i in range(len(actual)):
+		if actual[i] == predicted[i]:
+			correct += 1
+	return correct / float(len(actual)) * 100.0
+
+
 ######## Test ###########################
 # from sklearn.datasets import make_classification
 # from sklearn.ensemble import RandomForestClassifier
