@@ -20,7 +20,7 @@ class ApplicationWindow(QtWidgets.QMainWindow):
 
         self.handle_ui()
         self.ui.pushButton_1.clicked.connect(self.draw_roc_curve_data)
-        self.model()
+        
         self.ui.pushButton.clicked.connect(self.open_dialog_box)
 
 
@@ -28,37 +28,16 @@ class ApplicationWindow(QtWidgets.QMainWindow):
         self.ui.pushButton_1.setEnabled(False)
         
 
-    def model(self):
-        from sklearn.datasets import make_classification
-        from sklearn.ensemble import RandomForestClassifier
-        from sklearn.model_selection import train_test_split
-        #import pandas as pd
-        #import numpy as np
-        from sklearn.metrics import roc_curve
-        import matplotlib.pyplot as plt
-
-        X, y = make_classification(n_samples=1000, n_informative=10, n_features=20, flip_y=0.2)
-        X_train, X_test, y_train, y_test = train_test_split(
-            X, y, test_size=0.3, random_state=42
-        )
-
-        model = RandomForestClassifier()
-        model.fit(X_train, y_train)
-
-        prob_vector = model.predict_proba(X_test)[:, 1]
-        prediction = model.predict(X_test)
-        self.ui.pushButton_1.setEnabled(True)
-
-        return prob_vector, y_test,prediction
+    
 
     def draw_roc_curve_data(self):
-        prob_vector,y_test,prediction = self.model()
+        prob_vector,y_test,prediction = 0 #self.model()
         ROC = pc.roc_from_scratch(prob_vector,y_test,partitions=10)
         self.ui.image_1.plotItem.getViewBox().viewRange()
-        self.ui.image_1.plot(ROC[:,0],ROC[:,1])
 
         self.ui.textEdit_1.setPlaceholderText("{}%".format(pc.accuracy_metric(y_test,prediction)))
 
+        self.ui.image_1.plot(ROC[:,0],ROC[:,1])
    
     def open_dialog_box(self):
         filename = QFileDialog.getOpenFileName(self,'open File','c\\', 'image files(*.jpg)')
